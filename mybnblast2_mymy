@@ -165,13 +165,11 @@ $ kubectl apply -f commission.yaml
 
 * 숙소 예약 
 ```
-```
-![p1](https://user-images.githubusercontent.com/66579960/89418970-c1bbbc00-d76b-11ea-91f6-600d3901244b.jpg)
+![예약](https://user-images.githubusercontent.com/69068684/89494208-a3e46a80-d7f0-11ea-8557-6e8b7cd1bfc3.PNG)
 
 * 결과 확인
-![p2](https://user-images.githubusercontent.com/66579960/89418971-c1bbbc00-d76b-11ea-86f5-16db6adccc02.jpg)
-![p5](https://user-images.githubusercontent.com/66579960/89418975-c2ece900-d76b-11ea-863e-b41a1ea5c5aa.jpg)
-```
+![캐시백](https://user-images.githubusercontent.com/69068684/89494213-a47d0100-d7f0-11ea-855d-b34b1da70d29.PNG)
+
 ```
 # 검증1) 동기식 호출 과 Fallback 처리
 - 예약 시 결제 서비스(동기)에 이어 캐시백포인트 서비스를 동기식으로 호출하고 있음.
@@ -181,13 +179,10 @@ $ kubectl apply -f commission.yaml
 ```
 $ kubectl delete -f commission.yaml
 ```
-![p21](https://user-images.githubusercontent.com/66579960/89478950-82718780-d7cc-11ea-8f96-8f4030c855ef.jpg)
-```
+![동기식호출](https://user-images.githubusercontent.com/69068684/89494201-a2b33d80-d7f0-11ea-90c6-349c45889357.PNG)
 ```
 * 예약 에러 확인
-![p22](https://user-images.githubusercontent.com/66579960/89478951-830a1e00-d7cc-11ea-9452-47d355781fc3.jpg)
-![p23](https://user-images.githubusercontent.com/66579960/89478955-83a2b480-d7cc-11ea-9ad3-a402edbe4fa0.jpg)
-```
+![예약에러 확인](https://user-images.githubusercontent.com/69068684/89494212-a47d0100-d7f0-11ea-8b52-9875ed6a7cc9.PNG)
 ```
 
 * 수수료 서비스 기동
@@ -196,8 +191,7 @@ $ kubectl apply -f comission.yaml
 ```
 
 * 예약 성공 확인
-![p29](https://user-images.githubusercontent.com/66579960/89479159-0f1c4580-d7cd-11ea-9395-3f0456e64a8f.jpg)
-```
+![예약 성공](https://user-images.githubusercontent.com/69068684/89494204-a3e46a80-d7f0-11ea-9614-38fb79b99db0.PNG)
 ```
 # 검증2) 비동기식 호출 / 시간적 디커플링 / 장애격리 / 최종 (Eventual) 일관성 테스트
 
