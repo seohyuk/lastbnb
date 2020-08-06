@@ -201,7 +201,7 @@ $ kubectl apply -f comission.yaml
 
 * 캐시백포인트 서비스 중지
 ```
-kubectl delete -f comission.yaml
+kubectl delete -f commission.yaml
 ```
 
 * 예약 정상 취소
@@ -256,7 +256,7 @@ siege -v -c100 -t180S -r10 --content-type "application/json" 'http://commission:
 
 * 캐시백포인트 이미지 update (readness, liveness 미설정 상태)
 ```
-$ kubectl apply -f comission-na.yaml
+$ kubectl apply -f commission-na.yaml
 
 
 ```
