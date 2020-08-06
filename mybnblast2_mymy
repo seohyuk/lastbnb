@@ -172,7 +172,7 @@ $ kubectl apply -f commission.yaml
 * 결과 확인
 ![캐시백](https://user-images.githubusercontent.com/69068684/89494213-a47d0100-d7f0-11ea-855d-b34b1da70d29.PNG)
 
-```
+
 # 검증1) 동기식 호출 과 Fallback 처리
 - 예약 시 결제 서비스(동기)에 이어 캐시백포인트 서비스를 동기식으로 호출하고 있음.
 - 동기식 호출에서는 호출 시간에 따른 타임 커플링이 발생하며, 캐시백포인트 지급시스템이 장애가 나면 예약 등록을 못받는다는 것을 확인
