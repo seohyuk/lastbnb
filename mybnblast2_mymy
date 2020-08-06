@@ -187,7 +187,7 @@ $ kubectl delete -f commission.yaml
 ![예약에러 확인](https://user-images.githubusercontent.com/69068684/89494212-a47d0100-d7f0-11ea-8b52-9875ed6a7cc9.PNG)
 ```
 
-* 수수료 서비스 기동
+* 캐시백포인트 서비스 기동
 ```
 $ kubectl apply -f comission.yaml
 ```
@@ -197,26 +197,24 @@ $ kubectl apply -f comission.yaml
 ```
 # 검증2) 비동기식 호출 / 시간적 디커플링 / 장애격리 / 최종 (Eventual) 일관성 테스트
 
-- 숙소가 예약된 후 취소처리 시 수수료 취소는 비동기식
+- 숙소가 예약된 후 취소처리 시 캐시백포인트 취소는 비동기식
 
-* 수수료 서비스 중지
+* 캐시백포인트 서비스 중지
 ```
 kubectl delete -f comission.yaml
 ```
 
 * 예약 정상 취소
-![p24](https://user-images.githubusercontent.com/66579960/89478956-843b4b00-d7cc-11ea-899d-7067a7fb7bf8.jpg)
-![p25](https://user-images.githubusercontent.com/66579960/89478957-843b4b00-d7cc-11ea-874a-d7c1bf04562e.jpg)
-![p26](https://user-images.githubusercontent.com/66579960/89478959-84d3e180-d7cc-11ea-9a98-936b68057ed1.jpg)
+
 ```
 ```
 
-* 수수료 서비스 기동
+* 캐시백포인트 서비스 기동
 ```
 $ kubectl apply -f commission.yaml
 ```
-* 수수료 취소 이력 조회
-![p28](https://user-images.githubusercontent.com/66579960/89478961-856c7800-d7cc-11ea-8c4e-21e9fe3098e7.jpg)
+* 캐시백포인트 취소 이력 조회
+
 ```
 ```
 
@@ -234,7 +232,7 @@ $ kubectl autoscale deploy commission -n mybnb --min=1 --max=3 --cpu-percent=15
 $ kubectl get deploy auth -n mybnb -w 
 ```
 
-* 수수료 부하 발생 (siege 에서) - 동시사용자 100명, 180초 동안 실시
+* 캐시백포인트 부하 발생 (siege 에서) - 동시사용자 100명, 180초 동안 실시
 ```
 
 $ kubectl exec -it siege -n mybnb -- /bin/bash
@@ -245,18 +243,18 @@ $ siege -v -c100 -t180S -r10 --content-type "application/json" 'http://commissio
 ```
 
 * 스케일 아웃 확인
-![p16](https://user-images.githubusercontent.com/66579960/89419009-caac8d80-d76b-11ea-84fa-29c6f8bc8f67.jpg)
+
 ```
 ```
 
 # 검증5) 무정지 재배포
 
-* 수수료조회 부하 발생 (siege 에서) - 동시사용자 1명, 300초 동안 실시
+* 캐시백포인트 부하 발생 (siege 에서) - 동시사용자 1명, 300초 동안 실시
 ```
 siege -v -c100 -t180S -r10 --content-type "application/json" 'http://commission:8080/commissions/1 PUT {"bookId":19, "payId":"7", "price":1000, "charge":"10", "status":"CommissionPayed"}'
 ```
 
-* 수수료 이미지 update (readness, liveness 미설정 상태)
+* 캐시백포인트 이미지 update (readness, liveness 미설정 상태)
 ```
 $ kubectl apply -f comission-na.yaml
 
@@ -278,22 +276,22 @@ siege                      2/2     Running       0          100m
 ```
 
 * 에러 발생 확인
-![p19](https://user-images.githubusercontent.com/66579960/89477450-40dedd80-d7c8-11ea-9e2c-9729aff1eb61.jpg)
+
 ```
 ```
 
-* 수수료조회 부하 발생 (siege 에서) - 동시사용자 1명, 300초 동안 실시
+* 캐시백포인트 부하 발생 (siege 에서) - 동시사용자 1명, 300초 동안 실시
 ```
 siege -v -c100 -t180S -r10 --content-type "application/json" 'http://commission:8080/commissions/1 PUT {"bookId":19, "payId":"7", "price":1000, "charge":"10", "status":"CommissionPayed"}'
 ```
 
-* 수수료 이미지 update (readness, liveness 설정 상태)
+* 캐시백포인트 이미지 update (readness, liveness 설정 상태)
 ```
 $ kubectl apply -f commission.yaml
 ```
 
 * 정상 실행 확인 (siege 에서)
 
-![p18](https://user-images.githubusercontent.com/66579960/89477448-3fadb080-d7c8-11ea-975c-cc20a25e3a21.jpg)
+
 ```
 ```
