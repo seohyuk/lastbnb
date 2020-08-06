@@ -258,21 +258,7 @@ siege -v -c100 -t180S -r10 --content-type "application/json" 'http://commission:
 ```
 $ kubectl apply -f comission-na.yaml
 
-(POD 상태)
-NAME                       READY   STATUS        RESTARTS   AGE
-alarm-77cd9d57-96r4k       2/2     Running       0          13m
-auth-5d4c8cd986-7v4v8      2/2     Running       0          20m
-auth-5d4c8cd986-9vtht      2/2     Running       0          3m33s
-auth-5d4c8cd986-lmdp2      2/2     Running       0          3m33s
-booking-7ffd5f9d75-lwhq8   2/2     Running       0          99m
-gateway-7885fb4994-whvw8   2/2     Running       0          100m
-html-6fbc78fb49-t7dd8      2/2     Running       0          100m
-mypage-595b95dbf5-x5xgt    2/2     Running       0          99m
-pay-6ddbb7d4dd-c847f       2/2     Running       0          99m
-review-69957988c6-4sdfd    2/2     Running       0          6s               <=============
-review-7cfb746cbb-682ks    2/2     Terminating   0          99m
-room-6448f765fc-jsbgr      2/2     Running       0          99m
-siege                      2/2     Running       0          100m
+
 ```
 
 * 에러 발생 확인
