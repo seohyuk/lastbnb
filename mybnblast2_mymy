@@ -166,6 +166,7 @@ $ kubectl apply -f commission.yaml
 
 * 숙소 예약 
 ```
+```
 ![예약](https://user-images.githubusercontent.com/69068684/89494208-a3e46a80-d7f0-11ea-8557-6e8b7cd1bfc3.PNG)
 
 * 결과 확인
