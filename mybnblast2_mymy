@@ -220,29 +220,9 @@ $ kubectl apply -f commission.yaml
 ```
 ```
 
-# 검증3) 동기식 호출 / 서킷 브레이킹 / 장애격리
-- 서킷 브레이킹 프레임워크의 선택: istio-injection + DestinationRule
+# 검증3) 동기식 호출 
 - 숙소 등록시 동기로 호출되는 인증 서비스에 설정
 
-* istio-injection 적용 (기 적용완료)
-```
-kubectl label namespace mybnb istio-injection=enabled
-```
-
-* 수수료 부하 발생 (siege 에서) - 동시사용자 100명, 60초 동안 실시
-```
-$ siege -v -c100 -t60S -r10 --content-type "application/json" 'http://commission:8080/commissions/1 PUT {"bookId":19, "payId":"7", "price":1000, "charge":"10", "status":"CommissionPayed"}'
-```
-
-* 서킷 브레이킹을 위한 DestinationRule 적용
-```
-$ kubectl apply -f dr-commission.yaml
-```
-
-* 서킷 브레이킹 확인 (siege 에서)
-![p13](https://user-images.githubusercontent.com/66579960/89419003-c97b6080-d76b-11ea-8d94-edde8f11d08e.jpg)
-```
-```
 
 
 # 검증4) 오토스케일 아웃
