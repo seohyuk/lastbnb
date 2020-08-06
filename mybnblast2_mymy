@@ -158,6 +158,7 @@ $ kubectl apply -f alarm.yaml
 $ kubectl apply -f commission.yaml
 ```
 
+
 # 사전 검증
 
 * 화면
